@@ -38,7 +38,6 @@ class PedidoStruct extends BaseStruct {
     String? iconPay,
     bool? autorizado,
     bool? estorno,
-    int? idYampi,
   })  : _id = id,
         _number = number,
         _statusId = statusId,
@@ -69,8 +68,7 @@ class PedidoStruct extends BaseStruct {
         _estado = estado,
         _iconPay = iconPay,
         _autorizado = autorizado,
-        _estorno = estorno,
-        _idYampi = idYampi;
+        _estorno = estorno;
 
   // "id" field.
   int? _id;
@@ -302,15 +300,6 @@ class PedidoStruct extends BaseStruct {
 
   bool hasEstorno() => _estorno != null;
 
-  // "idYampi" field.
-  int? _idYampi;
-  int get idYampi => _idYampi ?? 0;
-  set idYampi(int? val) => _idYampi = val;
-
-  void incrementIdYampi(int amount) => idYampi = idYampi + amount;
-
-  bool hasIdYampi() => _idYampi != null;
-
   static PedidoStruct fromMap(Map<String, dynamic> data) => PedidoStruct(
         id: castToType<int>(data['id']),
         number: castToType<int>(data['number']),
@@ -343,7 +332,6 @@ class PedidoStruct extends BaseStruct {
         iconPay: data['iconPay'] as String?,
         autorizado: data['autorizado'] as bool?,
         estorno: data['estorno'] as bool?,
-        idYampi: castToType<int>(data['idYampi']),
       );
 
   static PedidoStruct? maybeFromMap(dynamic data) =>
@@ -381,7 +369,6 @@ class PedidoStruct extends BaseStruct {
         'iconPay': _iconPay,
         'autorizado': _autorizado,
         'estorno': _estorno,
-        'idYampi': _idYampi,
       }.withoutNulls;
 
   @override
@@ -509,10 +496,6 @@ class PedidoStruct extends BaseStruct {
         'estorno': serializeParam(
           _estorno,
           ParamType.bool,
-        ),
-        'idYampi': serializeParam(
-          _idYampi,
-          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -673,11 +656,6 @@ class PedidoStruct extends BaseStruct {
           ParamType.bool,
           false,
         ),
-        idYampi: deserializeParam(
-          data['idYampi'],
-          ParamType.int,
-          false,
-        ),
       );
 
   @override
@@ -716,8 +694,7 @@ class PedidoStruct extends BaseStruct {
         estado == other.estado &&
         iconPay == other.iconPay &&
         autorizado == other.autorizado &&
-        estorno == other.estorno &&
-        idYampi == other.idYampi;
+        estorno == other.estorno;
   }
 
   @override
@@ -752,8 +729,7 @@ class PedidoStruct extends BaseStruct {
         estado,
         iconPay,
         autorizado,
-        estorno,
-        idYampi
+        estorno
       ]);
 }
 
@@ -789,7 +765,6 @@ PedidoStruct createPedidoStruct({
   String? iconPay,
   bool? autorizado,
   bool? estorno,
-  int? idYampi,
 }) =>
     PedidoStruct(
       id: id,
@@ -823,5 +798,4 @@ PedidoStruct createPedidoStruct({
       iconPay: iconPay,
       autorizado: autorizado,
       estorno: estorno,
-      idYampi: idYampi,
     );

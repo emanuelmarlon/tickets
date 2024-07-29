@@ -430,7 +430,15 @@ class _NovaConsultaWidgetState extends State<NovaConsultaWidget> {
                                         .cast<PedidoStruct>();
                                 FFAppState().update(() {});
 
-                                context.goNamed('detlhesClientes');
+                                context.goNamed(
+                                  'detlhesClientes',
+                                  queryParameters: {
+                                    'cpf': serializeParam(
+                                      _model.cpfTextController.text,
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
                               } else {
                                 await showDialog(
                                   context: context,
