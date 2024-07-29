@@ -1,0 +1,6 @@
+package com.mycompany.ticketsagent
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

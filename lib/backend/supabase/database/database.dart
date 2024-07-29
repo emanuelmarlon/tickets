@@ -1,0 +1,37 @@
+export '../../../flutter_flow/lat_lng.dart';
+export 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
+
+export '../supabase.dart';
+export 'row.dart';
+export 'table.dart';
+
+export 'tables/feed_intelipost.dart';
+export 'tables/suporte_logistica.dart';
+export 'tables/codes_crm.dart';
+export 'tables/atividades_com_usuario.dart';
+export 'tables/view_roteiro_completo.dart';
+export 'tables/total_sales_view.dart';
+export 'tables/roteiro_recorrente.dart';
+export 'tables/user_byana.dart';
+export 'tables/p_o_ps.dart';
+export 'tables/credenciais.dart';
+export 'tables/suporte_t.dart';
+export 'tables/comentarios_tickets.dart';
+export 'tables/vendas_promotor.dart';
+export 'tables/atividades.dart';
+export 'tables/suporte_logistica_com_usuarios.dart';
+export 'tables/pedidos_yampi_v2.dart';
+export 'tables/clientesv2.dart';
+export 'tables/roteiro.dart';
+export 'tables/user_tt.dart';
+export 'tables/lojas.dart';
+export 'tables/roteiro_completo.dart';
+export 'tables/view_pedidos_resumo.dart';
+export 'tables/mensagem_template.dart';
+export 'tables/usuarios.dart';
+export 'tables/view_pedidos_cliente.dart';
+export 'tables/vendedores.dart';
+export 'tables/orders_tracking.dart';
+export 'tables/notas_fiscais.dart';
+export 'tables/orders.dart';
+export 'tables/comentarios_tickets_logistica.dart';
