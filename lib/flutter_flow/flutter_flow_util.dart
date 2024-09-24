@@ -9,12 +9,12 @@ import 'dart:math' show pow, pi, sin;
 import 'package:intl/intl.dart';
 import 'package:json_path/json_path.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 
 
+export 'keep_alive_wrapper.dart';
 export 'lat_lng.dart';
 export 'place.dart';
 export 'uploaded_file.dart';
@@ -243,10 +243,18 @@ String formatNumber(
           formattedValue = NumberFormat.decimalPattern().format(value);
           break;
         case DecimalType.periodDecimal:
-          formattedValue = NumberFormat.decimalPattern('en_US').format(value);
+          if (currency != null) {
+            formattedValue = NumberFormat('#,##0.00', 'en_US').format(value);
+          } else {
+            formattedValue = NumberFormat.decimalPattern('en_US').format(value);
+          }
           break;
         case DecimalType.commaDecimal:
-          formattedValue = NumberFormat.decimalPattern('es_PA').format(value);
+          if (currency != null) {
+            formattedValue = NumberFormat('#,##0.00', 'es_PA').format(value);
+          } else {
+            formattedValue = NumberFormat.decimalPattern('es_PA').format(value);
+          }
           break;
       }
       break;
@@ -502,24 +510,6 @@ extension StatefulWidgetExtensions on State<StatefulWidget> {
       // ignore: invalid_use_of_protected_member
       setState(fn);
     }
-  }
-}
-
-extension WalkthroughWrapperExtension on Widget {
-  Widget addWalkthrough(
-    GlobalKey walkthroughKey,
-    TutorialCoachMark? controller, {
-    int? listIndex,
-  }) {
-    if (listIndex != null && listIndex != 0) {
-      return this;
-    }
-    return controller != null
-        ? KeyedSubtree(
-            key: walkthroughKey,
-            child: this,
-          )
-        : this;
   }
 }
 

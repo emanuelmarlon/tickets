@@ -87,4 +87,10 @@ class SuporteTRow extends SupabaseDataRow {
   String? get categoriaMotivo => getField<String>('categoriaMotivo');
   set categoriaMotivo(String? value) =>
       setField<String>('categoriaMotivo', value);
+
+  bool? get cancelamento => getField<bool>('cancelamento');
+  set cancelamento(bool? value) => setField<bool>('cancelamento', value);
+
+  int? get pedidoId => getField<int>('pedidoId');
+  set pedidoId(int? value) => setField<int>('pedidoId', value);
 }

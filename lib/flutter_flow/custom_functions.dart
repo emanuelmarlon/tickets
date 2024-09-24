@@ -32,6 +32,31 @@ bool? pesquisa(
       textpesquisain3.toLowerCase().contains(textpesquisafor.toLowerCase()));
 }
 
+bool? verificaNumeroCopy(String? numeroString) {
+  if (numeroString == null || numeroString.isEmpty) {
+    return null;
+  }
+
+  // Tentar converter a string para um número
+  var numValue = int.tryParse(numeroString);
+  if (numValue == null) {
+    return null;
+  }
+
+  // Verificar se o número está no intervalo de 2 a 4 (inclusive)
+  if (numValue >= 0.5 && numValue < 1) {
+    return true;
+  }
+
+  // Verificar se o número é maior ou igual a 5
+  if (numValue >= 1) {
+    return false;
+  }
+
+  // Para todos os outros casos, retornar null
+  return null;
+}
+
 DateTime? primeiroDiaDoMes(DateTime? dataAtual) {
   if (dataAtual == null) {
     dataAtual = DateTime.now();
@@ -66,6 +91,14 @@ DateTime formatDate(String data) {
   } catch (e) {
     throw FormatException('Invalid date format: $data');
   }
+}
+
+String formatardataData(String data) {
+  DateTime dataFormatada = DateTime.parse(data);
+  String dataAjustada =
+      "${dataFormatada.day.toString().padLeft(2, '0')}/${dataFormatada.month.toString().padLeft(2, '0')}/${dataFormatada.year}";
+
+  return dataAjustada;
 }
 
 double somoarNumeros(List<double> lista) {
@@ -156,6 +189,32 @@ bool? verificaNumero(String? numeroString) {
   return null;
 }
 
+bool? pesquisaCopy(
+  String? textpesquisafor,
+  String? textpesquisain,
+  String? textpesquisain2,
+  String? textpesquisain3,
+  String? textpesquisain4,
+  String? textpesquisain5,
+) {
+  if (textpesquisafor == null ||
+      textpesquisain == null ||
+      textpesquisain2 == null ||
+      textpesquisain3 == null ||
+      textpesquisain4 == null ||
+      textpesquisain5 == null) {
+    return false;
+  }
+
+  return (textpesquisain
+          .toLowerCase()
+          .contains(textpesquisafor.toLowerCase()) ||
+      textpesquisain2.toLowerCase().contains(textpesquisafor.toLowerCase()) ||
+      textpesquisain3.toLowerCase().contains(textpesquisafor.toLowerCase()) ||
+      textpesquisain4.toLowerCase().contains(textpesquisafor.toLowerCase()) ||
+      textpesquisain5.toLowerCase().contains(textpesquisafor.toLowerCase()));
+}
+
 List<dynamic> ordenarDataTable(
   List<dynamic> jsonList,
   int columnIndex,
@@ -174,4 +233,36 @@ List<dynamic> ordenarDataTable(
   });
 
   return jsonList;
+}
+
+int convertDoubleEmInteiro(double numeroDouble) {
+  return numeroDouble.toInt();
+}
+
+String formatardata(String data) {
+  DateTime dataFormatada = DateTime.parse(data);
+  String dataAjustada =
+      "${dataFormatada.day.toString().padLeft(2, '0')}/${dataFormatada.month.toString().padLeft(2, '0')}/${dataFormatada.year}";
+  String horaAjustada =
+      "${dataFormatada.hour.toString().padLeft(2, '0')}:${dataFormatada.minute.toString().padLeft(2, '0')}";
+
+  return "$dataAjustada $horaAjustada";
+}
+
+String jsonString(dynamic json) {
+  return json.toString();
+}
+
+String formatarNumeroReais(String numero) {
+  final formatador =
+      NumberFormat.currency(locale: 'pt_BR', symbol: '', decimalDigits: 2);
+  return formatador.format(numero);
+}
+
+double divisao(double numero) {
+  return numero / 12;
+}
+
+String? dataTimeToString(DateTime? datatime) {
+  return datatime?.toIso8601String();
 }

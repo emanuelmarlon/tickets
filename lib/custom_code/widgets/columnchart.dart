@@ -65,6 +65,10 @@ class _ColumnchartState extends State<Columnchart> {
     return Container(
       width: widget.width,
       height: widget.height,
+      decoration: BoxDecoration(
+        color: Colors.transparent, // Garante que o fundo é transparente
+        border: Border.all(color: Colors.transparent), // Remove qualquer borda
+      ),
       child: SfCartesianChart(
         primaryXAxis: CategoryAxis(
           isVisible: false,

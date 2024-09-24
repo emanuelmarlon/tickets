@@ -19,6 +19,8 @@ class TotaisGeralStruct extends BaseStruct {
     int? totalAtividadesEmAndamento,
     int? totalAtividadesPendente,
     int? totalAtividadesConcluido,
+    int? totalSuportetAbertoCancelamentoTrue,
+    int? totalAtividadesAbertoUserid,
   })  : _totalSuportetAberto = totalSuportetAberto,
         _totalSuportetEmAndamento = totalSuportetEmAndamento,
         _totalSuportetPendente = totalSuportetPendente,
@@ -30,7 +32,10 @@ class TotaisGeralStruct extends BaseStruct {
         _totalAtividadesAberto = totalAtividadesAberto,
         _totalAtividadesEmAndamento = totalAtividadesEmAndamento,
         _totalAtividadesPendente = totalAtividadesPendente,
-        _totalAtividadesConcluido = totalAtividadesConcluido;
+        _totalAtividadesConcluido = totalAtividadesConcluido,
+        _totalSuportetAbertoCancelamentoTrue =
+            totalSuportetAbertoCancelamentoTrue,
+        _totalAtividadesAbertoUserid = totalAtividadesAbertoUserid;
 
   // "total_suportet_aberto" field.
   int? _totalSuportetAberto;
@@ -162,6 +167,31 @@ class TotaisGeralStruct extends BaseStruct {
 
   bool hasTotalAtividadesConcluido() => _totalAtividadesConcluido != null;
 
+  // "total_suportet_aberto_cancelamento_true" field.
+  int? _totalSuportetAbertoCancelamentoTrue;
+  int get totalSuportetAbertoCancelamentoTrue =>
+      _totalSuportetAbertoCancelamentoTrue ?? 0;
+  set totalSuportetAbertoCancelamentoTrue(int? val) =>
+      _totalSuportetAbertoCancelamentoTrue = val;
+
+  void incrementTotalSuportetAbertoCancelamentoTrue(int amount) =>
+      totalSuportetAbertoCancelamentoTrue =
+          totalSuportetAbertoCancelamentoTrue + amount;
+
+  bool hasTotalSuportetAbertoCancelamentoTrue() =>
+      _totalSuportetAbertoCancelamentoTrue != null;
+
+  // "total_atividades_aberto_userid" field.
+  int? _totalAtividadesAbertoUserid;
+  int get totalAtividadesAbertoUserid => _totalAtividadesAbertoUserid ?? 0;
+  set totalAtividadesAbertoUserid(int? val) =>
+      _totalAtividadesAbertoUserid = val;
+
+  void incrementTotalAtividadesAbertoUserid(int amount) =>
+      totalAtividadesAbertoUserid = totalAtividadesAbertoUserid + amount;
+
+  bool hasTotalAtividadesAbertoUserid() => _totalAtividadesAbertoUserid != null;
+
   static TotaisGeralStruct fromMap(Map<String, dynamic> data) =>
       TotaisGeralStruct(
         totalSuportetAberto: castToType<int>(data['total_suportet_aberto']),
@@ -185,6 +215,10 @@ class TotaisGeralStruct extends BaseStruct {
             castToType<int>(data['total_atividades_pendente']),
         totalAtividadesConcluido:
             castToType<int>(data['total_atividades_concluido']),
+        totalSuportetAbertoCancelamentoTrue:
+            castToType<int>(data['total_suportet_aberto_cancelamento_true']),
+        totalAtividadesAbertoUserid:
+            castToType<int>(data['total_atividades_aberto_userid']),
       );
 
   static TotaisGeralStruct? maybeFromMap(dynamic data) => data is Map
@@ -205,6 +239,9 @@ class TotaisGeralStruct extends BaseStruct {
         'total_atividades_em_andamento': _totalAtividadesEmAndamento,
         'total_atividades_pendente': _totalAtividadesPendente,
         'total_atividades_concluido': _totalAtividadesConcluido,
+        'total_suportet_aberto_cancelamento_true':
+            _totalSuportetAbertoCancelamentoTrue,
+        'total_atividades_aberto_userid': _totalAtividadesAbertoUserid,
       }.withoutNulls;
 
   @override
@@ -255,6 +292,14 @@ class TotaisGeralStruct extends BaseStruct {
         ),
         'total_atividades_concluido': serializeParam(
           _totalAtividadesConcluido,
+          ParamType.int,
+        ),
+        'total_suportet_aberto_cancelamento_true': serializeParam(
+          _totalSuportetAbertoCancelamentoTrue,
+          ParamType.int,
+        ),
+        'total_atividades_aberto_userid': serializeParam(
+          _totalAtividadesAbertoUserid,
           ParamType.int,
         ),
       }.withoutNulls;
@@ -321,6 +366,16 @@ class TotaisGeralStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        totalSuportetAbertoCancelamentoTrue: deserializeParam(
+          data['total_suportet_aberto_cancelamento_true'],
+          ParamType.int,
+          false,
+        ),
+        totalAtividadesAbertoUserid: deserializeParam(
+          data['total_atividades_aberto_userid'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -342,7 +397,10 @@ class TotaisGeralStruct extends BaseStruct {
         totalAtividadesAberto == other.totalAtividadesAberto &&
         totalAtividadesEmAndamento == other.totalAtividadesEmAndamento &&
         totalAtividadesPendente == other.totalAtividadesPendente &&
-        totalAtividadesConcluido == other.totalAtividadesConcluido;
+        totalAtividadesConcluido == other.totalAtividadesConcluido &&
+        totalSuportetAbertoCancelamentoTrue ==
+            other.totalSuportetAbertoCancelamentoTrue &&
+        totalAtividadesAbertoUserid == other.totalAtividadesAbertoUserid;
   }
 
   @override
@@ -358,7 +416,9 @@ class TotaisGeralStruct extends BaseStruct {
         totalAtividadesAberto,
         totalAtividadesEmAndamento,
         totalAtividadesPendente,
-        totalAtividadesConcluido
+        totalAtividadesConcluido,
+        totalSuportetAbertoCancelamentoTrue,
+        totalAtividadesAbertoUserid
       ]);
 }
 
@@ -375,6 +435,8 @@ TotaisGeralStruct createTotaisGeralStruct({
   int? totalAtividadesEmAndamento,
   int? totalAtividadesPendente,
   int? totalAtividadesConcluido,
+  int? totalSuportetAbertoCancelamentoTrue,
+  int? totalAtividadesAbertoUserid,
 }) =>
     TotaisGeralStruct(
       totalSuportetAberto: totalSuportetAberto,
@@ -389,4 +451,6 @@ TotaisGeralStruct createTotaisGeralStruct({
       totalAtividadesEmAndamento: totalAtividadesEmAndamento,
       totalAtividadesPendente: totalAtividadesPendente,
       totalAtividadesConcluido: totalAtividadesConcluido,
+      totalSuportetAbertoCancelamentoTrue: totalSuportetAbertoCancelamentoTrue,
+      totalAtividadesAbertoUserid: totalAtividadesAbertoUserid,
     );

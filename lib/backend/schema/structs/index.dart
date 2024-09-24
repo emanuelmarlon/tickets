@@ -4,6 +4,7 @@ export 'chart_data_struct.dart';
 export 'atividades_mes_struct.dart';
 export 'busca_cliente_struct.dart';
 export 'busca_usuario_struct.dart';
+export 'datas_struct.dart';
 export 'ip_struct.dart';
 export 'pedido_struct.dart';
 export 'tatais_motivos_struct.dart';

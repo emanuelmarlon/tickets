@@ -93,4 +93,13 @@ class PedidosYampiV2Row extends SupabaseDataRow {
 
   bool? get estorno => getField<bool>('estorno');
   set estorno(bool? value) => setField<bool>('estorno', value);
+
+  int? get ticketId => getField<int>('ticketId');
+  set ticketId(int? value) => setField<int>('ticketId', value);
+
+  bool? get ticketVinculado => getField<bool>('ticketVinculado');
+  set ticketVinculado(bool? value) => setField<bool>('ticketVinculado', value);
+
+  bool? get estornado => getField<bool>('estornado');
+  set estornado(bool? value) => setField<bool>('estornado', value);
 }

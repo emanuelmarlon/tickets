@@ -34,4 +34,13 @@ class UsuariosRow extends SupabaseDataRow {
 
   bool? get transportadora => getField<bool>('transportadora');
   set transportadora(bool? value) => setField<bool>('transportadora', value);
+
+  String? get imagem => getField<String>('imagem');
+  set imagem(String? value) => setField<String>('imagem', value);
+
+  String? get cpf => getField<String>('cpf');
+  set cpf(String? value) => setField<String>('cpf', value);
+
+  bool? get adm => getField<bool>('adm');
+  set adm(bool? value) => setField<bool>('adm', value);
 }

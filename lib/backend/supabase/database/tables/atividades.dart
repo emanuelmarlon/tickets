@@ -43,4 +43,10 @@ class AtividadesRow extends SupabaseDataRow {
 
   int? get clienteId => getField<int>('clienteId');
   set clienteId(int? value) => setField<int>('clienteId', value);
+
+  bool? get exibir => getField<bool>('exibir');
+  set exibir(bool? value) => setField<bool>('exibir', value);
+
+  int? get ticketIdSite => getField<int>('ticketIdSite');
+  set ticketIdSite(int? value) => setField<int>('ticketIdSite', value);
 }

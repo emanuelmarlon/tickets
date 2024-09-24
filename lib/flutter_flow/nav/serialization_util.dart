@@ -224,24 +224,30 @@ dynamic deserializeParam<T>(
             return CodesCrmRow(data);
           case AtividadesComUsuarioRow:
             return AtividadesComUsuarioRow(data);
-          case ViewRoteiroCompletoRow:
-            return ViewRoteiroCompletoRow(data);
+          case VNotificacoesDetalhadasRow:
+            return VNotificacoesDetalhadasRow(data);
+          case TesteRow:
+            return TesteRow(data);
           case TotalSalesViewRow:
             return TotalSalesViewRow(data);
-          case RoteiroRecorrenteRow:
-            return RoteiroRecorrenteRow(data);
           case UserByanaRow:
             return UserByanaRow(data);
-          case POPsRow:
-            return POPsRow(data);
           case CredenciaisRow:
             return CredenciaisRow(data);
           case SuporteTRow:
             return SuporteTRow(data);
+          case ProdutosV2Row:
+            return ProdutosV2Row(data);
           case ComentariosTicketsRow:
             return ComentariosTicketsRow(data);
+          case FollowUpPedidosRow:
+            return FollowUpPedidosRow(data);
+          case ContatosByanaRow:
+            return ContatosByanaRow(data);
           case VendasPromotorRow:
             return VendasPromotorRow(data);
+          case NotificacoesRow:
+            return NotificacoesRow(data);
           case AtividadesRow:
             return AtividadesRow(data);
           case SuporteLogisticaComUsuariosRow:
@@ -250,18 +256,24 @@ dynamic deserializeParam<T>(
             return PedidosYampiV2Row(data);
           case Clientesv2Row:
             return Clientesv2Row(data);
-          case RoteiroRow:
-            return RoteiroRow(data);
+          case CancelamentoEstornoRow:
+            return CancelamentoEstornoRow(data);
           case UserTtRow:
             return UserTtRow(data);
+          case ClientesExataRow:
+            return ClientesExataRow(data);
+          case VendedoresMercosRow:
+            return VendedoresMercosRow(data);
           case LojasRow:
             return LojasRow(data);
-          case RoteiroCompletoRow:
-            return RoteiroCompletoRow(data);
+          case ProdutosRow:
+            return ProdutosRow(data);
           case ViewPedidosResumoRow:
             return ViewPedidosResumoRow(data);
           case MensagemTemplateRow:
             return MensagemTemplateRow(data);
+          case ChatByanaRow:
+            return ChatByanaRow(data);
           case UsuariosRow:
             return UsuariosRow(data);
           case ViewPedidosClienteRow:
@@ -272,6 +284,10 @@ dynamic deserializeParam<T>(
             return OrdersTrackingRow(data);
           case NotasFiscaisRow:
             return NotasFiscaisRow(data);
+          case PedidosExataRow:
+            return PedidosExataRow(data);
+          case Contatov5Row:
+            return Contatov5Row(data);
           case OrdersRow:
             return OrdersRow(data);
           case ComentariosTicketsLogisticaRow:

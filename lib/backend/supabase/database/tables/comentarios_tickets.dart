@@ -52,4 +52,7 @@ class ComentariosTicketsRow extends SupabaseDataRow {
 
   bool? get publico => getField<bool>('publico');
   set publico(bool? value) => setField<bool>('publico', value);
+
+  double? get ticketIdSite => getField<double>('ticketIdSite');
+  set ticketIdSite(double? value) => setField<double>('ticketIdSite', value);
 }

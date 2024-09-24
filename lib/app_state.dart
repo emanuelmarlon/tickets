@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'flutter_flow/request_manager.dart';
 import '/backend/schema/structs/index.dart';
+import 'backend/supabase/supabase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -68,6 +70,22 @@ class FFAppState extends ChangeNotifier {
     });
     _safeInit(() {
       _idUsuario = prefs.getInt('ff_idUsuario') ?? _idUsuario;
+    });
+    _safeInit(() {
+      _imagemUsuario = prefs.getString('ff_imagemUsuario') ?? _imagemUsuario;
+    });
+    _safeInit(() {
+      _menu = prefs.getBool('ff_menu') ?? _menu;
+    });
+    _safeInit(() {
+      _drawerTamanho = prefs.getDouble('ff_drawerTamanho') ?? _drawerTamanho;
+    });
+    _safeInit(() {
+      _adm = prefs.getBool('ff_adm') ?? _adm;
+    });
+    _safeInit(() {
+      _textFormHtmlEditor =
+          prefs.getString('ff_textFormHtmlEditor') ?? _textFormHtmlEditor;
     });
   }
 
@@ -201,7 +219,7 @@ class FFAppState extends ChangeNotifier {
 
   List<TotaisGeralStruct> _totaisGeral = [
     TotaisGeralStruct.fromSerializableMap(jsonDecode(
-        '{\"total_suportet_aberto\":\"0\",\"total_suportet_em_andamento\":\"0\",\"total_suportet_pendente\":\"0\",\"total_suportet_concluido\":\"0\",\"total_suportelogistica_aberto\":\"0\",\"total_suportelogistica_em_andamento\":\"0\",\"total_suportelogistica_pendente\":\"0\",\"total_suportelogistica_concluido\":\"0\",\"total_atividades_aberto\":\"0\",\"total_atividades_em_andamento\":\"0\",\"total_atividades_pendente\":\"0\",\"total_atividades_concluido\":\"0\"}'))
+        '{\"total_suportet_aberto\":\"0\",\"total_suportet_em_andamento\":\"0\",\"total_suportet_pendente\":\"0\",\"total_suportet_concluido\":\"0\",\"total_suportelogistica_aberto\":\"0\",\"total_suportelogistica_em_andamento\":\"0\",\"total_suportelogistica_pendente\":\"0\",\"total_suportelogistica_concluido\":\"0\",\"total_atividades_aberto\":\"0\",\"total_atividades_em_andamento\":\"0\",\"total_atividades_pendente\":\"0\",\"total_atividades_concluido\":\"0\",\"total_suportet_aberto_cancelamento_true\":\"0\",\"total_atividades_aberto_userid\":\"0\"}'))
   ];
   List<TotaisGeralStruct> get totaisGeral => _totaisGeral;
   set totaisGeral(List<TotaisGeralStruct> value) {
@@ -285,6 +303,75 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInBuscaCliente(int index, BuscaClienteStruct value) {
     buscaCliente.insert(index, value);
   }
+
+  bool _numeroPedidoEstorno = false;
+  bool get numeroPedidoEstorno => _numeroPedidoEstorno;
+  set numeroPedidoEstorno(bool value) {
+    _numeroPedidoEstorno = value;
+  }
+
+  String _imagemUsuario =
+      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/ticketsagent-pbb7oh/assets/9kfcr7heuves/149071.png';
+  String get imagemUsuario => _imagemUsuario;
+  set imagemUsuario(String value) {
+    _imagemUsuario = value;
+    prefs.setString('ff_imagemUsuario', value);
+  }
+
+  bool _menu = false;
+  bool get menu => _menu;
+  set menu(bool value) {
+    _menu = value;
+    prefs.setBool('ff_menu', value);
+  }
+
+  double _drawerTamanho = 270.0;
+  double get drawerTamanho => _drawerTamanho;
+  set drawerTamanho(double value) {
+    _drawerTamanho = value;
+    prefs.setDouble('ff_drawerTamanho', value);
+  }
+
+  bool _adm = false;
+  bool get adm => _adm;
+  set adm(bool value) {
+    _adm = value;
+    prefs.setBool('ff_adm', value);
+  }
+
+  String _HTMLMessage = 'Digite seu texto aqui...';
+  String get HTMLMessage => _HTMLMessage;
+  set HTMLMessage(String value) {
+    _HTMLMessage = value;
+  }
+
+  String _textFormHtmlEditor = '';
+  String get textFormHtmlEditor => _textFormHtmlEditor;
+  set textFormHtmlEditor(String value) {
+    _textFormHtmlEditor = value;
+    prefs.setString('ff_textFormHtmlEditor', value);
+  }
+
+  String _verMenu = '';
+  String get verMenu => _verMenu;
+  set verMenu(String value) {
+    _verMenu = value;
+  }
+
+  final _queryUsuariosManager = FutureRequestManager<List<UsuariosRow>>();
+  Future<List<UsuariosRow>> queryUsuarios({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Future<List<UsuariosRow>> Function() requestFn,
+  }) =>
+      _queryUsuariosManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearQueryUsuariosCache() => _queryUsuariosManager.clear();
+  void clearQueryUsuariosCacheKey(String? uniqueKey) =>
+      _queryUsuariosManager.clearRequest(uniqueKey);
 }
 
 void _safeInit(Function() initializeField) {

@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
 import '/backend/schema/structs/index.dart';
 
-import '/backend/supabase/supabase.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -95,20 +95,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const CadastroWidget(),
         ),
         FFRoute(
-          name: 'DetalheTicket1',
-          path: '/detalheTicket1',
-          builder: (context, params) => DetalheTicket1Widget(
-            infoTicket: params.getParam<OrdersTrackingRow>(
-              'infoTicket',
-              ParamType.SupabaseRow,
+          name: 'detalhePedido',
+          path: '/detalhePedido',
+          requireAuth: true,
+          builder: (context, params) => DetalhePedidoWidget(
+            id: params.getParam(
+              'id',
+              ParamType.int,
             ),
           ),
-        ),
-        FFRoute(
-          name: 'consultaCliente',
-          path: '/consultaCliente',
-          requireAuth: true,
-          builder: (context, params) => const ConsultaClienteWidget(),
         ),
         FFRoute(
           name: 'detlhesClientes',
@@ -198,11 +193,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const HomeWidget(),
         ),
         FFRoute(
-          name: 'teste',
-          path: '/teste',
-          builder: (context, params) => const TesteWidget(),
-        ),
-        FFRoute(
           name: 'clientes',
           path: '/clientes',
           requireAuth: true,
@@ -224,6 +214,99 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'redefinirSenha',
           path: '/redefinirSenha',
           builder: (context, params) => const RedefinirSenhaWidget(),
+        ),
+        FFRoute(
+          name: 'cancelamentos',
+          path: '/cancelamentos1',
+          requireAuth: true,
+          builder: (context, params) => CancelamentosWidget(
+            cpf: params.getParam(
+              'cpf',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'detalheCancelamento',
+          path: '/detalheCancelamento',
+          requireAuth: true,
+          builder: (context, params) => DetalheCancelamentoWidget(
+            id: params.getParam(
+              'id',
+              ParamType.int,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'cancelamentosGeral',
+          path: '/cancelamentosGeral',
+          requireAuth: true,
+          builder: (context, params) => const CancelamentosGeralWidget(),
+        ),
+        FFRoute(
+          name: 'detalhePedidoCopy',
+          path: '/detalhePedidoCopy',
+          requireAuth: true,
+          builder: (context, params) => DetalhePedidoCopyWidget(
+            id: params.getParam(
+              'id',
+              ParamType.int,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'detalhePedidoCopy2',
+          path: '/detalhePedidocopy2',
+          requireAuth: true,
+          builder: (context, params) => DetalhePedidoCopy2Widget(
+            id: params.getParam(
+              'id',
+              ParamType.int,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'pedidos',
+          path: '/pedidos',
+          requireAuth: true,
+          builder: (context, params) => PedidosWidget(
+            cpf: params.getParam(
+              'cpf',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'pedidosGeral',
+          path: '/pedidosGeral',
+          requireAuth: true,
+          builder: (context, params) => const PedidosGeralWidget(),
+        ),
+        FFRoute(
+          name: 'detalhePedidoExata',
+          path: '/detalhePedidoExata',
+          requireAuth: true,
+          builder: (context, params) => DetalhePedidoExataWidget(
+            id: params.getParam(
+              'id',
+              ParamType.int,
+            ),
+            data: params.getParam(
+              'data',
+              ParamType.DateTime,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'pedidosCopy',
+          path: '/pedidosCOPY',
+          requireAuth: true,
+          builder: (context, params) => PedidosCopyWidget(
+            cpf: params.getParam(
+              'cpf',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -412,10 +495,9 @@ class FFRoute {
                   child: SizedBox(
                     width: 50.0,
                     height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+                    child: SpinKitChasingDots(
+                      color: FlutterFlowTheme.of(context).primary,
+                      size: 50.0,
                     ),
                   ),
                 )

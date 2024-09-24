@@ -428,7 +428,7 @@ class TrackingCopyCall {
 
 class PedidoYampiCall {
   static Future<ApiCallResponse> call({
-    String? id = '',
+    String? id = '107582865',
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Pedido Yampi',
@@ -458,17 +458,18 @@ class PedidoYampiCall {
         response,
         r'''$.data.value_discount''',
       ));
-  static String? pagamenttipo(dynamic response) =>
+  static String? tipoPagamento(dynamic response) =>
       castToType<String>(getJsonField(
         response,
         r'''$.data.payments[:].name''',
       ));
-  static String? svgpayment(dynamic response) =>
+  static String? imagemPagamento(dynamic response) =>
       castToType<String>(getJsonField(
         response,
         r'''$.data.payments[:].icon_url''',
       ));
-  static String? wppUrl(dynamic response) => castToType<String>(getJsonField(
+  static String? urlWhatsapp(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.data.billet_whatsapp_link''',
       ));
@@ -483,6 +484,301 @@ class PedidoYampiCall {
   static String? cpf(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.data.customer.data.cpf''',
+      ));
+  static double? valorTotal(dynamic response) =>
+      castToType<double>(getJsonField(
+        response,
+        r'''$.data.value_total''',
+      ));
+  static double? valorProdutos(dynamic response) =>
+      castToType<double>(getJsonField(
+        response,
+        r'''$.data.value_products''',
+      ));
+  static double? frete(dynamic response) => castToType<double>(getJsonField(
+        response,
+        r'''$.data.value_shipment''',
+      ));
+  static String? nomeTransportadora(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.data.shipment_service''',
+      ));
+  static String? ip(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data.ip''',
+      ));
+  static String? whatsapp(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data.customer.data.phone.formated_number''',
+      ));
+  static String? rastreio(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data.track_code''',
+      ));
+  static String? urlRastrio(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.data.track_url''',
+      ));
+  static dynamic cliente(dynamic response) => getJsonField(
+        response,
+        r'''$.data.customer.data''',
+      );
+  static String? nome(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data.customer.data.name''',
+      ));
+}
+
+class ListarProdutosDeUmPedidoYampiCall {
+  static Future<ApiCallResponse> call({
+    String? id = '107582865',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Listar produtos de um pedido yampi',
+      apiUrl:
+          'https://api.dooki.com.br/v2/trihair-cosmeticos/orders/$id/items',
+      callType: ApiCallType.GET,
+      headers: {
+        'User-Token': 'NfxXUURCvhsDEH3CwLJlXKpAEBPc3EaUFAxDEpqM',
+        'User-Secret-Key': 'sk_1yvQaxEweokR1wMPWs9nOOl6J1bQqjP4e5sot',
+      },
+      params: {
+        'id': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? data(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      ) as List?;
+  static dynamic skuData(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:].sku.data''',
+      );
+}
+
+class ListarHistoricoDeStatusDeUmPedidoYampyCall {
+  static Future<ApiCallResponse> call({
+    String? id = '107582865',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Listar historico de status de um pedido yampy',
+      apiUrl:
+          'https://api.dooki.com.br/v2/trihair-cosmeticos/orders/$id/statuses',
+      callType: ApiCallType.GET,
+      headers: {
+        'User-Token': 'NfxXUURCvhsDEH3CwLJlXKpAEBPc3EaUFAxDEpqM',
+        'User-Secret-Key': 'sk_1yvQaxEweokR1wMPWs9nOOl6J1bQqjP4e5sot',
+      },
+      params: {
+        'id': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? data(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      ) as List?;
+}
+
+class ListarNotaFiscalDeUmPedidoCall {
+  static Future<ApiCallResponse> call({
+    String? id = '108539755',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Listar nota fiscal de um pedido',
+      apiUrl:
+          'https://api.dooki.com.br/v2/trihair-cosmeticos/orders/$id/invoices',
+      callType: ApiCallType.GET,
+      headers: {
+        'User-Token': 'NfxXUURCvhsDEH3CwLJlXKpAEBPc3EaUFAxDEpqM',
+        'User-Secret-Key': 'sk_1yvQaxEweokR1wMPWs9nOOl6J1bQqjP4e5sot',
+      },
+      params: {
+        'id': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? data(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      ) as List?;
+  static String? serie(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data[:].series''',
+      ));
+  static String? numero(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data[:].number''',
+      ));
+  static String? chave(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data[:].key''',
+      ));
+  static double? valor(dynamic response) => castToType<double>(getJsonField(
+        response,
+        r'''$.data[:].value''',
+      ));
+  static double? valorProdutos(dynamic response) =>
+      castToType<double>(getJsonField(
+        response,
+        r'''$.data[:].products_value''',
+      ));
+  static String? dataEmissao(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.data[:].created_at.date''',
+      ));
+  static String? url(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data[:].url''',
+      ));
+}
+
+class ListarRastreamentoCall {
+  static Future<ApiCallResponse> call({
+    String? id = '118540082',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Listar rastreamento',
+      apiUrl:
+          'https://api.dooki.com.br/v2/trihair-cosmeticos/orders/$id/tracking',
+      callType: ApiCallType.GET,
+      headers: {
+        'User-Token': 'NfxXUURCvhsDEH3CwLJlXKpAEBPc3EaUFAxDEpqM',
+        'User-Secret-Key': 'sk_1yvQaxEweokR1wMPWs9nOOl6J1bQqjP4e5sot',
+      },
+      params: {
+        'id': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? data(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      ) as List?;
+}
+
+class ListarEmailsCall {
+  static Future<ApiCallResponse> call({
+    String? id = '107582865',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Listar emails',
+      apiUrl:
+          'https://api.dooki.com.br/v2/trihair-cosmeticos/orders/$id/emails',
+      callType: ApiCallType.GET,
+      headers: {
+        'User-Token': 'NfxXUURCvhsDEH3CwLJlXKpAEBPc3EaUFAxDEpqM',
+        'User-Secret-Key': 'sk_1yvQaxEweokR1wMPWs9nOOl6J1bQqjP4e5sot',
+      },
+      params: {
+        'id': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? data(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      ) as List?;
+}
+
+class ListarTransacoesCall {
+  static Future<ApiCallResponse> call({
+    String? id = '108539755',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Listar transacoes',
+      apiUrl:
+          'https://api.dooki.com.br/v2/trihair-cosmeticos/orders/$id/transactions',
+      callType: ApiCallType.GET,
+      headers: {
+        'User-Token': 'NfxXUURCvhsDEH3CwLJlXKpAEBPc3EaUFAxDEpqM',
+        'User-Secret-Key': 'sk_1yvQaxEweokR1wMPWs9nOOl6J1bQqjP4e5sot',
+      },
+      params: {
+        'id': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? data(dynamic response) => getJsonField(
+        response,
+        r'''$.data''',
+        true,
+      ) as List?;
+  static int? id(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.data[:].id''',
+      ));
+  static String? idappmax(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data[:].gateway_transaction_id''',
+      ));
+  static String? parcelas(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data[:].installment_formated''',
+      ));
+  static String? formaPagamento(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.data[:].payment.data.alias''',
+      ));
+  static String? svgPix(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.data[:].payment.data.icon_url''',
+      ));
+  static double? valor(dynamic response) => castToType<double>(getJsonField(
+        response,
+        r'''$.data[:].amount''',
       ));
 }
 
@@ -770,11 +1066,17 @@ class TotaisCall {
 }
 
 class TotaisGeralCall {
-  static Future<ApiCallResponse> call() async {
+  static Future<ApiCallResponse> call({
+    int? usuarioId = 4,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "p_user_id": $usuarioId
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'totais geral',
       apiUrl:
-          'https://rehqrkhyxcbrginanzgn.supabase.co/rest/v1/rpc/totais_geral',
+          'https://rehqrkhyxcbrginanzgn.supabase.co/rest/v1/rpc/total_geral',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -784,6 +1086,7 @@ class TotaisGeralCall {
             'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJlaHFya2h5eGNicmdpbmFuemduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU4MjM0OTMsImV4cCI6MjAzMTM5OTQ5M30._ja3YpEzFxlWUPhjevKrw7IvPDR7MkpW3NQO9wZ-MJ0',
       },
       params: {},
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -850,16 +1153,25 @@ class TotaisGeralCall {
         response,
         r'''$[:].total_atividades_concluido''',
       ));
+  static int? cancelamento(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$[:].total_suportet_aberto_cancelamento_true''',
+      ));
+  static int? totalAbertoUsuario(dynamic response) =>
+      castToType<int>(getJsonField(
+        response,
+        r'''$[:].total_atividades_aberto_userid''',
+      ));
 }
 
 class DisparoDeMensagemCall {
   static Future<ApiCallResponse> call({
-    int? id,
-    String? rastreio = '',
-    String? nota = '',
-    String? chave = '',
-    String? motivo = '',
-    String? descricao = '',
+    int? id = 0,
+    String? rastreio = '0000',
+    String? nota = '0000',
+    String? chave = '000000',
+    String? motivo = 'pendente',
+    String? descricao = 'teste',
   }) async {
     final ffApiRequestBody = '''
 {
@@ -875,6 +1187,47 @@ class DisparoDeMensagemCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Disparo de Mensagem',
+      apiUrl: 'https://wapi.jadada.net/message/sendText/TrihairNT',
+      callType: ApiCallType.POST,
+      headers: {
+        'apikey': '0s3kse5b9iqedxfqjb890dc',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class DisparoDeMensagemCopyCall {
+  static Future<ApiCallResponse> call({
+    int? id,
+    String? rastreio = '',
+    String? nota = '',
+    String? chave = '',
+    String? motivo = '',
+    String? descricao = '',
+  }) async {
+    const ffApiRequestBody = '''
+{
+  "number": "71985571098",
+  "options": {
+    "delay": 1200,
+    "presence": "composing",
+    "linkPreview": false
+  },
+  "textMessage": {
+    "text": "oi"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Disparo de Mensagem Copy',
       apiUrl: 'https://wapi.jadada.net/message/sendText/TrihairNT',
       callType: ApiCallType.POST,
       headers: {
@@ -1126,6 +1479,41 @@ class EstornoAppmaxCall {
       apiUrl: 'https://admin.appmax.com.br/api/v3/refund',
       callType: ApiCallType.POST,
       headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class AlterarStatusPedidoMercosCall {
+  static Future<ApiCallResponse> call({
+    String? status = 'Aberto',
+    String? pedidoMercos = '24452',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "p_numeromercos": "$pedidoMercos",
+  "p_status": "$status"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ALTERAR STATUS PEDIDO MERCOS',
+      apiUrl:
+          'https://rehqrkhyxcbrginanzgn.supabase.co/rest/v1/rpc/atualizar_status',
+      callType: ApiCallType.POST,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJlaHFya2h5eGNicmdpbmFuemduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU4MjM0OTMsImV4cCI6MjAzMTM5OTQ5M30._ja3YpEzFxlWUPhjevKrw7IvPDR7MkpW3NQO9wZ-MJ0',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJlaHFya2h5eGNicmdpbmFuemduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU4MjM0OTMsImV4cCI6MjAzMTM5OTQ5M30._ja3YpEzFxlWUPhjevKrw7IvPDR7MkpW3NQO9wZ-MJ0',
+        'Content-Type': 'application/json',
+      },
       params: {},
       body: ffApiRequestBody,
       bodyType: BodyType.JSON,
